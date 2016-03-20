@@ -697,6 +697,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
     if (current_mode == MediaMode.PHOTO)
     {
       enable_mode_change ();
+      action_cancelled = true;
     }
   }
 
@@ -710,6 +711,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
     {
       if (current_mode == MediaMode.PHOTO)
       {
+        action_cancelled = false;
         disable_mode_change ();
       }
 
@@ -812,6 +814,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
   {
     if (is_start)
     {
+      action_cancelled = false;
       camera.start_video_recording (fileutil.get_new_media_filename (this.current_mode));
       /* Will be called every 1 second while
        * update_timeout_layer returns true.
@@ -824,6 +827,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
     }
     else
     {
+      action_cancelled = true;
       camera.stop_video_recording ();
       /* The timeout_layer always shows the "00:00:00"
        * string when not recording, in order to notify
@@ -864,6 +868,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
   {
     if (is_start)
     {
+      action_cancelled = false;
       is_bursting = true;
       this.disable_mode_change ();
       // FIXME: Set the effects action to be inactive.
@@ -888,6 +893,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
       if (current_countdown != null && current_countdown.running)
         current_countdown.stop ();
 
+      action_cancelled = true;
       is_bursting = false;
       this.enable_mode_change ();
       take_action_button.tooltip_text = _("Take multiple photos");
