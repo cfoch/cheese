@@ -35,6 +35,7 @@ public class Cheese.Application : Gtk.Application
 
     private Camera camera;
     private PreferencesDialog preferences_dialog;
+    private StickersDialog stickers_dialog;
 
     private const GLib.ActionEntry action_entries[] = {
         { "shoot", on_shoot },
@@ -43,6 +44,7 @@ public class Cheese.Application : Gtk.Application
           on_fullscreen_change },
         { "wide-mode", on_action_toggle, null, "false", on_wide_mode_change },
         { "effects", on_action_toggle, null, "false", on_effects_change },
+        { "stickers", on_stickers },
         { "preferences", on_preferences },
         { "help", on_help },
         { "about", on_about },
@@ -127,6 +129,7 @@ public class Cheese.Application : Gtk.Application
             main_window.show ();
             setup_camera ();
             preferences_dialog = new PreferencesDialog (camera);
+            stickers_dialog = new StickersDialog (camera);
             var preferences = this.lookup_action ("preferences");
             preferences.notify["enabled"].connect (on_preferences_enabled);
             this.add_window (main_window);
@@ -434,6 +437,14 @@ public class Cheese.Application : Gtk.Application
         main_window.set_effects (state);
 
         action.set_state (value);
+    }
+
+    /**
+     * Show the preferences dialog.
+     */
+    private void on_stickers ()
+    {
+        stickers_dialog.show ();
     }
 
     /**

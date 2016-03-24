@@ -10,6 +10,10 @@
                 <attribute name="label" translatable="yes">P_references</attribute>
                 <attribute name="action">app.preferences</attribute>
             </item>
+            <item>
+                <attribute name="label" translatable="yes">_Stickers</attribute>
+                <attribute name="action">app.stickers</attribute>
+            </item>
         </section>
         <section>
             <item>

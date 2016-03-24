@@ -197,6 +197,7 @@ noinst_resource_files = \
 	data/cheese-viewport.json \
 	data/cheese-main-window.ui \
 	data/cheese-prefs.ui \
+	data/cheese-stickers.ui \
 	data/headerbar.ui \
 	data/menus.ui \
 	data/pixmaps/cheese-1.svg \
@@ -218,6 +219,7 @@ cheese_SOURCES = \
 	src/cheese-countdown.vala \
 	src/cheese-effects-manager.vala \
 	src/cheese-preferences.vala \
+	src/cheese-stickers.vala \
 	src/cheese-window.vala \
 	src/cheese-main.vala \
 	src/thumbview/cheese-thumb-view.c \
@@ -406,6 +408,14 @@ dist_appsicon256_DATA = data/icons/256x256/org.gnome.Cheese.png
 dist_appsiconsymbolic_DATA = data/icons/symbolic/org.gnome.Cheese-symbolic.svg
 
 update_icon_cache = gtk-update-icon-cache --ignore-theme-index --force
+
+stickersdir = $(datadir)/icons/hicolor/scalable/cheese
+dist_stickers_DATA = data/pixmaps/cheese/mask1.svg \
+			data/pixmaps/cheese/mask2.svg \
+			data/pixmaps/cheese/mask3.svg \
+			data/pixmaps/cheese/mask4.svg \
+			data/pixmaps/cheese/mask5.svg \
+			data/pixmaps/cheese/mask6.svg
 
 install-data-hook: install-update-icon-cache
 uninstall-hook: uninstall-update-icon-cache

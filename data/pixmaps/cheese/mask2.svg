@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg2831"
+    sodipodi:docname="mask with handle.svg"
+    viewBox="0 0 392.36 375.11"
+    version="1.1"
+    inkscape:version="0.47 r22583"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-y="212"
+      pagecolor="#ffffff"
+      inkscape:window-height="464"
+      inkscape:window-maximized="0"
+      inkscape:zoom="0.35"
+      inkscape:window-x="264"
+      showgrid="false"
+      borderopacity="1.0"
+      inkscape:current-layer="layer1"
+      inkscape:cx="196.17945"
+      inkscape:cy="310.61205"
+      inkscape:window-width="613"
+      inkscape:pageopacity="0.0"
+      inkscape:document-units="px"
+  />
+  <g
+      id="layer1"
+      inkscape:label="Layer 1"
+      inkscape:groupmode="layer"
+      transform="translate(-178.82 -236.74)"
+    >
+    <path
+        id="path3190"
+        sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccc"
+        style="fill-rule:evenodd;stroke:#000000;stroke-width:3;fill:#000000"
+        inkscape:connector-curvature="0"
+        d="m358.92 410.08c-0.45704 1.0504 38.35 33.244 41.715 49.771-2.7887 3.2513-12.721 0.78745-18.202 1.8854l-55.911 1.7049c-4.5671-18.951 26.826-52.275 27.151-53.53 1.7488 0.0564 3.4977 0.1129 5.2465 0.16934zm69.754 117.29c11.225-19.655-18.793-28.568-33.557-30.958-26.391-3.6852-56.732-3.7052-78.871 13.082-15.2 21.234 15.263-2.116 25.74-0.25452 27.841-3.9663 59.783-3.6769 83.193 13.934l1.9453 2.059zm67.096-167.03c-13.803 17.839-40.466 10.717-57.214 0.97024-17.358-10.341-36.566-29.945-29.947-51.835 9.7254-19.043 35.728-15.08 51.944-7.3429 19.653 9.4617 40.931 28.427 37.691 52.326l-0.99876 3.036zm-151.22-37.22c3.9284 19.567-15.99 33.182-30.8 41.61-22.826 11.352-51.444 19.608-75.795 8.264-20.371-12.521-2.0267-36.982 12.812-45.434 23.667-15.144 54.426-25.106 82.043-15.717 5.0798 2.1527 9.8942 5.887 11.74 11.278zm210.73 96.234c-44.498 58.703-87.573 118.77-123.4 183.24-14.058 13.431-37.03-7.594-55.542-1.9794-19.781-0.92492-39.117 3.7231-57.763 9.7338-18.787-4.4497-23.527-28.536-34.362-42.642-30.316-53.105-63.523-104.49-95.998-156.26-18.107-33.363-2.5776-73.236 21.703-98.92 39.908-42.571 96.505-69.5 154.63-74.145 56.119-2.2111 111 21.307 154.54 55.542 27.964 22.915 55.402 56.169 49.89 94.748-1.8184 11.198-6.8452 21.7-13.696 30.679z"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >mask</dc:title
+        >
+        <dc:date
+          >2010-05-16T20:18:50</dc:date
+        >
+        <dc:description
+          >a simple black sad mask</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/60553/mask-by-tom</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >tom</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >black and white</rdf:li
+            >
+            <rdf:li
+              >mask</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
