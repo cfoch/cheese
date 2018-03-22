@@ -6,4 +6,27 @@ GtkScrollbar#vscrollbar {
   -GtkScrollbar-has-secondary-forward-stepper: 0;
   -GtkScrollbar-min-slider-length: 60;
 }
-  
+
+.cheese-sticker-toggle-button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 0px;
+
+  background: none;
+}
+
+.cheese-sticker-toggle-button:checked {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(93, 159, 159);
+  border-radius: 0px;
+
+  background-color: rgba(93, 159, 159, 0.51);
+}
+
+.cheese-sticker-button-image {
+  border-style: none;
+  background-color: white;
+  padding: 14px;
+}

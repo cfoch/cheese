@@ -50,6 +50,7 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
     private Gtk.Builder header_bar_ui = new Gtk.Builder.from_resource ("/org/gnome/Cheese/headerbar.ui");
 
     private Gtk.HeaderBar header_bar;
+    private Gtk.Button stickers_button;
 
     private GLib.Settings settings;
 
@@ -121,8 +122,10 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
         GLib.Object (application: application);
 
         header_bar = header_bar_ui.get_object ("header_bar") as Gtk.HeaderBar;
+        stickers_button = header_bar_ui.get_object ("stickers_button") as Gtk.Button;
 
         Gtk.Settings settings = Gtk.Settings.get_default ();
+        stickers_button.clicked.connect (this.on_stickers_button_clicked);
 
         if (settings.gtk_dialogs_use_header)
         {
@@ -135,6 +138,15 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
     {
         header_bar.set_title (title);
         this.set_title (title);
+    }
+
+    private void on_stickers_button_clicked (Gtk.Button button)
+    {
+		HashTable<string, string> table = new HashTable<string, string> (str_hash, str_equal);
+        Cheese.StickersPopover popover;
+    	popover = new Cheese.StickersPopover(stickers_button, table);
+
+    	popover.show_all();
     }
 
     private bool on_window_state_change_event (Gtk.Widget widget,

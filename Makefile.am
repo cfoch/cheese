@@ -54,6 +54,7 @@ AM_VALAFLAGS = \
 	--pkg config \
 	--pkg posix \
 	--pkg gtk+-3.0 \
+	--pkg gee-0.8 \
 	--pkg gmodule-2.0 \
 	--pkg clutter-1.0 \
 	--pkg clutter-gtk-1.0 \
@@ -213,6 +214,9 @@ cheese_SOURCES = \
 	src/cheese-countdown.vala \
 	src/cheese-effects-manager.vala \
 	src/cheese-preferences.vala \
+	src/cheese-stickers-button.vala \
+	src/cheese-stickers-grid.vala \
+	src/cheese-stickers-popup.vala \
 	src/cheese-window.vala \
 	src/cheese-main.vala \
 	src/thumbview/cheese-thumb-view.c \
@@ -348,6 +352,16 @@ dist_appsicon256_DATA = data/icons/256x256/org.gnome.Cheese.png
 dist_appsiconsymbolic_DATA = data/icons/symbolic/org.gnome.Cheese-symbolic.svg
 
 update_icon_cache = gtk-update-icon-cache --ignore-theme-index --force
+
+stickersdir = $(datadir)/pixmaps/cheese/stickers/
+stickersmasksdir = $(stickersdir)/masks/
+dist_stickersmasks_DATA = data/pixmaps/cheese/stickers/masks/happy.png \
+	data/pixmaps/cheese/stickers/masks/surprise.png \
+	data/pixmaps/cheese/stickers/masks/ninja-clown.png \
+	data/pixmaps/cheese/stickers/masks/clown.png \
+	data/pixmaps/cheese/stickers/masks/ninja.png \
+	data/pixmaps/cheese/stickers/masks/angry.png
+
 
 install-data-hook: install-update-icon-cache
 uninstall-hook: uninstall-update-icon-cache
