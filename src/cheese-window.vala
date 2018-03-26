@@ -144,8 +144,8 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
     {
 		HashTable<string, string> table = new HashTable<string, string> (str_hash, str_equal);
         Cheese.StickersPopover popover;
-    	popover = new Cheese.StickersPopover(stickers_button, table);
-
+    	popover = new Cheese.StickersPopover(stickers_button);
+    	//popover = new Cheese.StickersPopover(stickers_button, table);
     	popover.show_all();
     }
 

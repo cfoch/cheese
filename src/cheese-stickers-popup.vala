@@ -20,7 +20,29 @@
 using Gtk;
 using GLib;
 
+[GtkTemplate (ui = "/org/gnome/Cheese/cheese-stickers-popover.ui")]
 public class Cheese.StickersPopover : Gtk.Popover {
+	[GtkChild]
+	private Gtk.SearchBar search_bar;
+	//[GtkChild]
+	//private Gtk.Revealer search_bar_revealer;
+
+	public StickersPopover(Gtk.Widget widget)
+	{
+		GLib.Object (relative_to: widget);
+		print ("POPOVER CLICKED\n");
+	}
+
+	[GtkCallback]
+	private void on_search_button_clicked(Gtk.Button search_button)
+	{
+		//bool reveal = this.search_bar_revealer.reveal_child;
+		//this.search_bar_revealer.reveal_child = !reveal;
+		bool reveal = this.search_bar.search_mode_enabled;
+		this.search_bar.search_mode_enabled = !reveal;
+	}
+
+	/*
 	private Gtk.Box box;
 	private Gtk.Box faces_presets_box;
 	private Gtk.SearchBar search_bar;
@@ -49,15 +71,15 @@ public class Cheese.StickersPopover : Gtk.Popover {
 
 
 		// this.set_size_request(300, 600);
-		/*
-		list_store = new Gtk.ListStore(2, typeof(string), typeof(int));
-		list_store.append(out iter);
-		list_store.set(iter, 0, "All", 1, 1);
-		list_store.append(out iter);
-		list_store.set(iter, 0, "Masks", 2, 2);
-		list_store.append(out iter);
-		list_store.set(iter, 0, "Stickers", 3, 3);
-		*/
+
+		// list_store = new Gtk.ListStore(2, typeof(string), typeof(int));
+		// list_store.append(out iter);
+		// list_store.set(iter, 0, "All", 1, 1);
+		// list_store.append(out iter);
+		// list_store.set(iter, 0, "Masks", 2, 2);
+		// list_store.append(out iter);
+		// list_store.set(iter, 0, "Stickers", 3, 3);
+
 		faces_presets_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
 		//combo_box = new Gtk.ComboBox.with_model(list_store);
 
@@ -101,5 +123,6 @@ public class Cheese.StickersPopover : Gtk.Popover {
 
 		this.add(box);
 	}
+	*/
 
 }
