@@ -65,7 +65,9 @@ AM_VALAFLAGS = \
 	--pkg cheese-thumbview \
 	--pkg cheese-common \
 	--pkg gdk-x11-3.0 \
-	--pkg gio-2.0
+	--pkg gio-2.0 \
+	--pkg gdk-pixbuf-2.0 \
+    --pkg gstcheese-1.0
 
 lib_LTLIBRARIES = libcheese.la libcheese-gtk.la
 
@@ -193,6 +195,7 @@ noinst_resource_files = \
 	data/cheese-viewport.json \
 	data/cheese-main-window.ui \
 	data/cheese-prefs.ui \
+	data/cheese-stickers-popover.ui \
 	data/headerbar.ui \
 	data/menus.ui \
 	data/pixmaps/cheese-1.svg \
@@ -214,8 +217,12 @@ cheese_SOURCES = \
 	src/cheese-countdown.vala \
 	src/cheese-effects-manager.vala \
 	src/cheese-preferences.vala \
-	src/cheese-stickers-button.vala \
+	src/cheese-sticker-button.vala \
+	src/cheese-face-preset-button.vala \
 	src/cheese-stickers-grid.vala \
+	src/cheese-face-grid-interface.vala \
+	src/cheese-face-preset-grid.vala \
+	src/cheese-stickers-page-interface.vala \
 	src/cheese-stickers-popup.vala \
 	src/cheese-window.vala \
 	src/cheese-main.vala \
@@ -353,15 +360,32 @@ dist_appsiconsymbolic_DATA = data/icons/symbolic/org.gnome.Cheese-symbolic.svg
 
 update_icon_cache = gtk-update-icon-cache --ignore-theme-index --force
 
-stickersdir = $(datadir)/pixmaps/cheese/stickers/
-stickersmasksdir = $(stickersdir)/masks/
-dist_stickersmasks_DATA = data/pixmaps/cheese/stickers/masks/happy.png \
-	data/pixmaps/cheese/stickers/masks/surprise.png \
-	data/pixmaps/cheese/stickers/masks/ninja-clown.png \
-	data/pixmaps/cheese/stickers/masks/clown.png \
-	data/pixmaps/cheese/stickers/masks/ninja.png \
-	data/pixmaps/cheese/stickers/masks/angry.png
+stickersdir = $(datadir)/cheese/stickers
+stickersimgdir= $(stickersdir)/img
+spritesdir = $(stickersdir)/sprites
+facepresetsdir = $(spritesdir)/face-presets
+facepresets_thumbnailsdir = $(facepresetsdir)/thumbnails
 
+facepresets_jsondir = $(facepresetsdir)
+facepresets_json_in_files = data/stickers/sprites/face-presets/face1.json.in
+facepresets_json_DATA = $(facepresets_json_in_files:.json.in=.json)
+$(facepresets_json_DATA): $(facepresets_json_in_files) Makefile
+	mkdir -p data/stickers/sprites/face-presets/
+	sed -e "s|\@stickersdir[@]|$(stickersdir)|g" $< > $@
+
+facepresets_spritesdir = $(facepresetsdir)
+facepresets_sprites_in_files = data/stickers/sprites/face-presets/face1.sprite.in
+facepresets_sprites_DATA = $(facepresets_sprites_in_files:.sprite.in=.sprite)
+$(facepresets_sprites_DATA): $(facepresets_sprites_in_files) Makefile
+	mkdir -p data/stickers/sprites/face-presets/
+	sed -e "s|\@stickersdir[@]|$(stickersdir)|g" $< > $@
+
+dist_facepresets_thumbnails_DATA = \
+	data/stickers/sprites/face-presets/thumbnails/face1.png
+
+stickersimg_headdir= $(stickersimgdir)/head
+dist_stickersimg_head_DATA = \
+	data/stickers/img/head/hat1.png
 
 install-data-hook: install-update-icon-cache
 uninstall-hook: uninstall-update-icon-cache
@@ -523,6 +547,10 @@ dist_noinst_DATA = \
 dist_noinst_SCRIPTS = \
 	autogen.sh
 
+EXTRA_DIST = \
+	$(facepresets_json_in_files) \
+	$(facepresets_sprites_in_files)
+
 CLEANFILES = \
 	$(appstream_XML) \
 	$(desktop_DATA) \
@@ -531,6 +559,8 @@ CLEANFILES = \
 	$(gir_DATA) \
 	$(service_DATA) \
 	$(typelib_DATA) \
+	$(facepresets_json_DATA) \
+	$(facepresets_sprites_DATA) \
 	src/cheese-resource.c \
 	src/cheese-resource.h
 

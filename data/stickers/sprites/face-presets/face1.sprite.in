@@ -1,0 +1,4 @@
+[Face]
+Name=Face Test Sprite
+Location=@stickersdir@/sprites/face-presets/face1.json
+Thumbnail=@stickersdir@/sprites/face-presets/thumbnails/face1.png

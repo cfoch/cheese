@@ -1,0 +1,14 @@
+{
+    "head": {
+        "rotate": true,
+        "loop": true,
+        "base-scale-factor": 0.5,
+        "frames": [
+            {
+                "base-scale-factor": 1.2,
+                "duration": 20,
+                "location": "@stickersdir@/img/head/hat1.png"
+            }
+        ]
+    }
+}

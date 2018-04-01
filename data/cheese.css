@@ -30,3 +30,8 @@ GtkScrollbar#vscrollbar {
   background-color: white;
   padding: 14px;
 }
+
+.cheese-sticker-popup-searchbar {
+  background: none;
+  border: none;
+}
