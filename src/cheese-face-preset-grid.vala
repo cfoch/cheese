@@ -32,9 +32,11 @@ public class Cheese.FacePresetGrid :
 	private string PRESETS_DIR = "cheese/stickers/sprites/face-presets/";
 	private int count_active_buttons;
 	private bool effects_available;
+	private List<Cheese.FacePresetButton> selection;
 
 	public FacePresetGrid ()
 	{
+		selection = new List<Cheese.FacePresetButton> ();
 		set_max_children_per_line (MAX_COLS);
 		set_min_children_per_line (MAX_COLS);
 		load_buttons ();
@@ -99,34 +101,81 @@ public class Cheese.FacePresetGrid :
 		}
 	}
 
-	private void on_preset_button_toggled (Cheese.StickerButton button)
+	private void on_preset_button_toggled (Cheese.StickerButton but)
 	{
+		Cheese.FacePresetButton button;
+		button = (Cheese.FacePresetButton) but;
 		if (button.active)
 		{
-			count_active_buttons++;
+			selection.append (button);
 		}
 		else
 		{
-			count_active_buttons--;
+			selection.remove (button);
 		}
-
-		if (count_active_buttons == 0)
+		if (selection.length () == 0)
 		{
 			effect_unavailable ();
 		}
-		else if (count_active_buttons == 1)
+		else if (selection.length () == 1)
 		{
 			effect_available ();
 		}
 	}
 
+	private string selection_to_data ()
+	{
+		Json.Array array;
+		Json.Node node;
+		Json.Generator generator;
+
+		generator = new Json.Generator ();
+		node = new Json.Node (Json.NodeType.ARRAY);
+
+		array = new Json.Array ();
+		selection.foreach ((preset_button) => {
+			array.add_element (preset_button.face_sprite_json);
+		});
+
+		node.set_array (array);
+		generator.set_root (node);
+		return generator.to_data (null);
+	}
+
 	public Cheese.Effect get_effect () throws Error
 	{
-		throw new ErrorType1.CODE_1A("Error");
+		string landmark = "/home/cfoch/Documents/git/gst-plugins-cheese/shape_predictor_68_face_landmarks.dat";
+		string facedetect_desc, overlay_desc, pipeline_desc;
+
+		facedetect_desc = "cheesefacedetect display-landmark=false " +
+					      "display-pose-estimation=false display-id=false " +
+					      "display-bounding-box=false scale-factor=0.5 " +
+					      "landmark=%s".printf (landmark);
+		overlay_desc = "cheesefaceoverlay data=%s".printf (selection_to_data ());
+		pipeline_desc = "%s ! videoconvert ! %s".printf (facedetect_desc,
+														 overlay_desc);
+		debug ("pipeline description: %s", pipeline_desc);
+		return new Cheese.Effect ("cheesefaceoverlay", pipeline_desc);
 	}
 
 	public Cheese.MultifaceSprite create_multiface_frame () throws Error
 	{
+		Json.Array array;
+		Json.Node node;
+		Json.Generator generator;
+
+		generator = new Json.Generator ();
+		node = new Json.Node (Json.NodeType.ARRAY);
+
+		array = new Json.Array ();
+		selection.foreach ((preset_button) => {
+			array.add_element (preset_button.face_sprite_json);
+		});
+
+		node.set_array (array);
+		generator.set_root (node);
+
+		print ("%s\n", generator.to_data (null));
 		throw new ErrorType1.CODE_1A("Error");
 	}
 }

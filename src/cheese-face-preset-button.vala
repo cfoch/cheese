@@ -23,11 +23,19 @@ using Gdk;
 
 public class Cheese.FacePresetButton : Cheese.StickerButton
 {
-	private Json.Node face_sprite_json;
+	private Json.Node _face_sprite_json;
 
 	public FacePresetButton.from_file (string image_filepath)
 	{
 		base.from_file (image_filepath);
+	}
+
+	public Json.Node face_sprite_json
+	{
+		get
+		{
+			return _face_sprite_json;
+		}
 	}
 
 	public static FacePresetButton new_from_keyfile(KeyFile file) throws Error {
@@ -61,7 +69,7 @@ public class Cheese.FacePresetButton : Cheese.StickerButton
 
 		debug ("Thumbnail path: %s\n", thumbnail_path);
 		button = new FacePresetButton.from_file (thumbnail_path);
-		button.face_sprite_json = node;
+		button._face_sprite_json = node;
 		return button;
 	}
 }

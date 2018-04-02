@@ -142,11 +142,10 @@ public class Cheese.MainWindow : Gtk.ApplicationWindow
 
     private void on_stickers_button_clicked (Gtk.Button button)
     {
-		HashTable<string, string> table = new HashTable<string, string> (str_hash, str_equal);
         Cheese.StickersPopover popover;
-    	popover = new Cheese.StickersPopover(stickers_button);
-    	//popover = new Cheese.StickersPopover(stickers_button, table);
-    	popover.show_all();
+        popover = new Cheese.StickersPopover(camera);
+        popover.relative_to = button;
+        popover.show_all();
     }
 
     private bool on_window_state_change_event (Gtk.Widget widget,

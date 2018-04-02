@@ -37,12 +37,13 @@ public class Cheese.StickersPopover : Gtk.Popover {
 	private Gtk.Stack stack;
 	private Cheese.FacePresetGrid page_face_preset;
 
-	public StickersPopover(Gtk.Widget widget)
+	private Cheese.Camera camera;
+
+	public StickersPopover(Cheese.Camera camera)
 	{
 		Gtk.StyleContext search_bar_style_context;
 
-
-		GLib.Object (relative_to: widget);
+		this.camera = camera;
 
         stack = new Gtk.Stack ();
         stack_switcher.set_stack (stack);
@@ -65,6 +66,25 @@ public class Cheese.StickersPopover : Gtk.Popover {
 	{
 		bool reveal = this.search_bar.search_mode_enabled;
 		this.search_bar.search_mode_enabled = !reveal;
+	}
+
+	[GtkCallback]
+	private void on_apply_button_clicked (Gtk.Button apply_button)
+	{
+		Cheese.StickersPageInterface page;
+
+		page = (Cheese.StickersPageInterface) stack.get_visible_child ();
+		try
+		{
+			Cheese.Effect effect;
+			effect = page.get_effect ();
+			camera.set_effect (effect);
+		}
+		catch (Error err)
+		{
+			warning ("UPPS");
+		}
+
 	}
 
 	private void on_effect_available ()
