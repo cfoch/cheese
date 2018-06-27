@@ -33,9 +33,11 @@ public class Cheese.FacePresetGrid :
 	private int count_active_buttons;
 	private bool effects_available;
 	private List<Cheese.FacePresetButton> selection;
+	private GLib.Settings settings;
 
 	public FacePresetGrid ()
 	{
+		settings = new GLib.Settings ("org.gnome.Cheese");
 		selection = new List<Cheese.FacePresetButton> ();
 		set_max_children_per_line (MAX_COLS);
 		set_min_children_per_line (MAX_COLS);
@@ -144,9 +146,10 @@ public class Cheese.FacePresetGrid :
 
 	public Cheese.Effect get_effect () throws Error
 	{
-		string landmark = "/home/cfoch/Documents/git/gst-plugins-cheese/shape_predictor_68_face_landmarks.dat";
+		string landmark;
 		string facedetect_desc, overlay_desc, pipeline_desc;
 
+		landmark = settings.get_string ("landmark");
 		facedetect_desc = "cheesefacedetect display-landmark=false " +
 					      "display-pose-estimation=false display-id=false " +
 					      "display-bounding-box=false scale-factor=0.5 " +
@@ -154,7 +157,6 @@ public class Cheese.FacePresetGrid :
 		overlay_desc = "cheesefaceoverlay data=%s".printf (selection_to_data ());
 		pipeline_desc = "%s ! videoconvert ! %s".printf (facedetect_desc,
 														 overlay_desc);
-		debug ("pipeline description: %s", pipeline_desc);
 		return new Cheese.Effect ("cheesefaceoverlay", pipeline_desc);
 	}
 

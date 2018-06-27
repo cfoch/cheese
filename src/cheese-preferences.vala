@@ -55,6 +55,8 @@ public class Cheese.PreferencesDialog : Gtk.Dialog
     private Gtk.CheckButton countdown_check;
     [GtkChild]
     private Gtk.CheckButton flash_check;
+    [GtkChild]
+    private Gtk.FileChooserButton landmark_file_chooser;
   
     private MediaMode current_mode;
 
@@ -169,6 +171,8 @@ public PreferencesDialog (Cheese.Camera camera)
       contrast_adjustment.value   = settings.get_double ("contrast");
       hue_adjustment.value        = settings.get_double ("hue");
       saturation_adjustment.value = settings.get_double ("saturation");
+
+      landmark_file_chooser.set_filename (settings.get_string ("landmark"));
 
         settings.bind ("burst-repeat", burst_repeat_spin, "value",
                        SettingsBindFlags.DEFAULT);
@@ -408,6 +412,17 @@ public PreferencesDialog (Cheese.Camera camera)
 
     settings.set_string ("camera", camera.get_selected_device ().get_name ());
     setup_resolutions_for_device (camera.get_selected_device ());
+  }
+
+  /**
+   * Sets the path to the 68-facial keypoints landmark model set.
+   *
+   * @param the file chooser button.
+   */
+  [GtkCallback]
+  private void on_landmark_file_set (Gtk.FileChooserButton button)
+  {
+    settings.set_string ("landmark", button.get_filename ());
   }
 
   /**
