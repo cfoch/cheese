@@ -150,8 +150,8 @@ public class Cheese.FacePresetGrid :
 		string facedetect_desc, overlay_desc, pipeline_desc;
 
 		landmark = settings.get_string ("landmark");
-		facedetect_desc = "cheesefacedetect display-landmark=false " +
-					      "display-pose-estimation=false display-id=false " +
+		facedetect_desc = "cheesefacetrack display-landmark=false " +
+					      "display-id=false " +
 					      "display-bounding-box=false scale-factor=0.5 " +
 					      "landmark=%s".printf (landmark);
 		overlay_desc = "cheesefaceoverlay data=%s".printf (selection_to_data ());
